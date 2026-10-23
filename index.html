@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do Life Dashboard</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1 class="site-title">Life Dashboard</h1>
+      <button id="theme-toggle-btn" class="btn btn--icon" aria-label="Toggle light/dark theme">
+        <span class="theme-icon theme-icon--light" aria-hidden="true">☀️</span>
+        <span class="theme-icon theme-icon--dark" aria-hidden="true">🌙</span>
+      </button>
+    </header>
+
+    <main class="dashboard-grid">
+
+      <!-- ═══════════════════════════════════════════════════
+           Widget 1: Greeting / Clock
+      ════════════════════════════════════════════════════ -->
+      <section class="widget widget--greeting" aria-label="Greeting and clock">
+        <div class="greeting-display">
+          <p id="greeting" class="greeting-text">Good Morning</p>
+          <time id="clock" class="clock-time" datetime="">00:00:00</time>
+          <p id="date-display" class="date-text"></p>
+        </div>
+
+        <form class="name-form" novalidate>
+          <label for="name-input" class="form-label">Your name</label>
+          <div class="input-row">
+            <input
+              type="text"
+              id="name-input"
+              class="form-input"
+              placeholder="Enter your name"
+              maxlength="50"
+              autocomplete="off"
+              aria-describedby="name-validation-msg"
+            />
+            <button type="submit" id="name-save-btn" class="btn btn--primary">Save</button>
+          </div>
+          <p id="name-validation-msg" class="validation-msg" role="alert" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════
+           Widget 2: Pomodoro Timer
+      ════════════════════════════════════════════════════ -->
+      <section class="widget widget--timer" aria-label="Pomodoro focus timer">
+        <h2 class="widget-title">Focus Timer</h2>
+
+        <div class="timer-display-wrap">
+          <time id="timer-display" class="timer-display" datetime="">25:00</time>
+        </div>
+
+        <div class="timer-controls" role="group" aria-label="Timer controls">
+          <button id="start-btn" class="btn btn--primary" aria-label="Start timer">Start</button>
+          <button id="stop-btn" class="btn btn--secondary" aria-label="Stop timer" disabled>Stop</button>
+          <button id="reset-btn" class="btn btn--ghost" aria-label="Reset timer">Reset</button>
+        </div>
+
+        <form class="duration-form" novalidate>
+          <label for="duration-input" class="form-label">Session duration (1–90 min)</label>
+          <div class="input-row">
+            <input
+              type="number"
+              id="duration-input"
+              class="form-input form-input--short"
+              min="1"
+              max="90"
+              value="25"
+              aria-describedby="duration-validation-msg"
+            />
+            <span class="input-unit">min</span>
+          </div>
+          <p id="duration-validation-msg" class="validation-msg" role="alert" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════
+           Widget 3: To-Do List
+      ════════════════════════════════════════════════════ -->
+      <section class="widget widget--todo" aria-label="To-do list">
+        <h2 class="widget-title">To-Do</h2>
+
+        <form class="task-form" novalidate>
+          <label for="task-input" class="form-label sr-only">New task description</label>
+          <div class="input-row">
+            <input
+              type="text"
+              id="task-input"
+              class="form-input"
+              placeholder="Add a new task…"
+              maxlength="250"
+              autocomplete="off"
+              aria-describedby="task-validation-msg"
+            />
+            <button type="submit" id="add-task-btn" class="btn btn--primary" aria-label="Add task">Add</button>
+          </div>
+          <p id="task-validation-msg" class="validation-msg" role="alert" aria-live="polite"></p>
+        </form>
+
+        <ul id="task-list" class="task-list" aria-label="Task list" aria-live="polite"></ul>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════
+           Widget 4: Quick Links
+      ════════════════════════════════════════════════════ -->
+      <section class="widget widget--links" aria-label="Quick links panel">
+        <h2 class="widget-title">Quick Links</h2>
+
+        <form class="link-form" novalidate>
+          <div class="input-row">
+            <label for="link-label-input" class="form-label sr-only">Link label</label>
+            <input
+              type="text"
+              id="link-label-input"
+              class="form-input"
+              placeholder="Label"
+              autocomplete="off"
+              aria-describedby="link-validation-msg"
+            />
+          </div>
+          <div class="input-row">
+            <label for="link-url-input" class="form-label sr-only">Link URL</label>
+            <input
+              type="url"
+              id="link-url-input"
+              class="form-input"
+              placeholder="https://example.com"
+              autocomplete="off"
+              aria-describedby="link-validation-msg"
+            />
+          </div>
+          <button type="submit" id="add-link-btn" class="btn btn--primary" aria-label="Add link">Add Link</button>
+          <p id="link-validation-msg" class="validation-msg" role="alert" aria-live="polite"></p>
+        </form>
+
+        <div id="links-panel" class="links-panel" aria-label="Saved links" aria-live="polite"></div>
+      </section>
+
+    </main>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
